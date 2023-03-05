@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VAT</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="item">
+        <span class="item-name" th:text="${item.getName()}"></span>
+        <span>Amount: <span th:text="${item.getAmount()}"></span></span>
+
+        <table>
+            <tr>
+                <th>Without VAT</th>
+                <th>VAT</th>
+                <th>Total</th>
+            </tr>
+            <tr>
+                <td>€<span th:text="${item.round(item.getPrice() - item.getVAT(false), 2)}"></span></td>
+                <td>€<span th:text="${item.getVAT(false)}"></span></td>
+                <td>€<span th:text="${item.getPrice()}"></span></td>
+            </tr>
+            <tr>
+                <td>€<span th:text="${item.round(item.getTotal() - item.getVAT(true), 2)}"></span></td>
+                <td>€<span th:text="${item.getVAT(true)}"></span></td>
+                <td>€<span th:text="${item.getTotal()}"></span></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
